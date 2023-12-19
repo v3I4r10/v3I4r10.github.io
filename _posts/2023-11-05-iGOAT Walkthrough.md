@@ -46,11 +46,11 @@ The first step to locate the CoreData file and the sensitive data is finding the
 
 Then, move to /var/mobile/Containers/data/Application/ and do grep with &lt;AppID&gt;: `find * | grep -i igoat`
 
-![bfaf025e7397cf763d2f590ac235e633.png](https://github.com/v3l4r10/v3l4r10.github.io/blob/master/screenshots/iGoat/bfaf025e7397cf763d2f590ac235e633.png?raw=true)
+![bfaf025e7397cf763d2f590ac235e633.png](/assets/img/screenshots/iGoat//bfaf025e7397cf763d2f590ac235e633.png)
 
 Now move to /610A25B0-5BF6-4BD0-A227-F51AD187523F/Library/Application Support and try to access the Core Data Application files using Sqlite3: `sqlite3 CoreData.sqlite`
 
-![c80948bc756798648a25901462263ca8.png](https://github.com/v3l4r10/v3l4r10.github.io/blob/master/screenshots/iGoat/c80948bc756798648a25901462263ca8.png?raw=true)
+![c80948bc756798648a25901462263ca8.png](/assets/img/screenshots/iGoat/c80948bc756798648a25901462263ca8.png)
 
 ### 2\. Plist Storage
 
@@ -62,7 +62,7 @@ Move to /private/var/mobile/Containers/Data/Application/&lt;AppUUID&gt;/Document
 
 There Credentials.plist is found, to be able to read it convert it using plist: `plutil -convert xml1 OWASP.iGoat-Swift.plist`
 
-![04ca5f1c8a19102dbd989c342115d47e.png](https://github.com/v3l4r10/v3l4r10.github.io/blob/master/screenshots/iGoat/04ca5f1c8a19102dbd989c342115d47e.png?raw=true)
+![04ca5f1c8a19102dbd989c342115d47e.png](/assets/img/screenshots/iGoat/04ca5f1c8a19102dbd989c342115d47e.png)
 
 ### 3\. NSUserDefaults Storage
 
@@ -75,7 +75,7 @@ Once in the folder, as the .plist file is not readable, convert the file in xml 
 
 `plutil -convert xml1 OWASP.iGoat-Swift.plist`
 
-![d6dec888899f4714798077897a6f2292.png](https://github.com/v3l4r10/v3l4r10.github.io/blob/master/screenshots/iGoat/d6dec888899f4714798077897a6f2292.png?raw=true)
+![d6dec888899f4714798077897a6f2292.png](/assets/img/screenshots/iGoat/d6dec888899f4714798077897a6f2292.png)
 
 ### 4\. YAP Storage
 
@@ -87,7 +87,7 @@ Move to /var/mobile/Containers/Data/Application/610A25B0-5BF6-4BD0-A227-F51AD187
 
 Here you will find YapDatabase.sqlite file. penm iot using sqlite3 YapDatabase.sqlite
 
-![c22e6d16bd67d8ccfd0e6d4f69f665f9.png](https://github.com/v3l4r10/v3l4r10.github.io/blob/master/screenshots/iGoat/c22e6d16bd67d8ccfd0e6d4f69f665f9.png?raw=true)
+![c22e6d16bd67d8ccfd0e6d4f69f665f9.png](/assets/img/screenshots/iGoat/c22e6d16bd67d8ccfd0e6d4f69f665f9.png)
 
 ### 5\. Realm Data Storage
 
@@ -111,7 +111,7 @@ Once opened, I will transfer the realm file using SCP to Linux
 
 After that open the retrieved file in Realm Studio:
 
-![a879e8a2963eabfc4c32daedcc09a251.png](https://github.com/v3l4r10/v3l4r10.github.io/blob/master/screenshots/iGoat/a879e8a2963eabfc4c32daedcc09a251.png?raw=true)
+![a879e8a2963eabfc4c32daedcc09a251.png](/assets/img/screenshots/iGoat/a879e8a2963eabfc4c32daedcc09a251.png)
 
 ### 6\. CouchBase Storage
 
@@ -127,7 +127,7 @@ To easily find the files do the following search:
 
 After finding the file mobile/Containers/Data/Application/610A25B0-5BF6-4BD0-A227-F51AD187523F/Library/Application Support/CouchbaseLite/couchbasedb.cblite2/db.sqlite3, open it using sqlite3:
 
-![c21853f2da09a38caea743762acc76e9.png](https://github.com/v3l4r10/v3l4r10.github.io/blob/master/screenshots/iGoat/c21853f2da09a38caea743762acc76e9.png?raw=true)
+![c21853f2da09a38caea743762acc76e9.png](/assets/img/screenshots/iGoat/c21853f2da09a38caea743762acc76e9.png)
 
 ### 7\. Cookie Storage
 
