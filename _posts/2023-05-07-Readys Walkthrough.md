@@ -9,7 +9,7 @@ In this entry I will solve PG's Readys machine. It is an Linux machine in the [T
 
 `nmap -sC -sV -p22,80,6379 192.168.223.166 -Pn -o targeted.txt`
 
-![c5391e4051b28caa4a2edecf56afeb50.png](/assets/img/screenshots/Readys/c5391e4051b28caa4a2edecf56afeb50.png234)
+![c5391e4051b28caa4a2edecf56afeb50.png](/assets/img/screenshots/Readys/c5391e4051b28caa4a2edecf56afeb50.png)
 
 By visiting http[:]//192.168.223.166/ I find wordpress running so I run wpscan.
 
