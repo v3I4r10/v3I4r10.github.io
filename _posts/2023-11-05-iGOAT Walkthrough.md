@@ -1,6 +1,6 @@
 ---
 title: iGOAT Walkthrough
-categories: iOS
+categories: Mobile iOS
 mermaid: true
 ---
 
@@ -42,7 +42,7 @@ Core Data is a framework provided by Apple for data storage and management in iO
 
 The first step to locate the CoreData file and the sensitive data is finding the &lt;AppID&gt; for iGoat application. For that run `frida-ps -Uai`. This command lists running processes on a USB-connected iOS device.
 
-![68135546f491856f8ae630f7e8e60094.png](https://github.com/v3l4r10/v3l4r10.github.io/blob/master/screenshots/iGoat/68135546f491856f8ae630f7e8e60094.png?raw=true)
+![68135546f491856f8ae630f7e8e60094.png](/screenshots/68135546f491856f8ae630f7e8e60094.png)
 
 Then, move to /var/mobile/Containers/data/Application/ and do grep with &lt;AppID&gt;: `find * | grep -i igoat`
 
