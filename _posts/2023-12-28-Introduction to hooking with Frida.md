@@ -3,7 +3,7 @@ title: Introduction to hooking with Frida
 tags: Frida Hooking
 categories: Mobile Android
 ---
-In this entry I will try to explain the of hooking in mobile applications. This is technique employed to intercept and modify the behavior of functions. For this tests I will be using Frida, an open-source toolkit to inject their scripts into running processes, enabling real-time manipulation and analysis.
+In this entry I will try to explain the of hooking in mobile applications. This is a technique employed to intercept and modify the behavior of functions. For this tests I will be using Frida, an open-source toolkit to inject their scripts into running processes, enabling real-time manipulation and analysis.
 
 ![Frida.png](/assets/img/screenshots/hooking_frida/Frida.png)
 
@@ -107,7 +107,7 @@ Android hooking involves intercepting and manipulating the execution flow of And
 
 ## Application analysis
 
-Before hooking a method, we have to understand how the application works, how to hooke a hookeable method and how to do it, so lets test it!
+Before hooking a method, we have to understand how the application works, how to hook a method and how to do it. So lets test!
 
 The functionality is quite simple, it asks us to enter a number and returns an output:
 
@@ -117,7 +117,7 @@ After the dynamic analysis, we will use [jadx](https://github.com/skylot/jadx) t
 
 `./Android/jadx/build/jadx/bin/jadx-gui`
 
-Once opened, go to MainActivty file. As it names indicatd, this file represents the main activity of the application. It includes the activity's lifecycle methods (onCreate, onStart, onResume, etc.) and the logic associated with handling user interface elements and user interactions.
+Once opened, go to MainActivty file. As it names indicates, this file represents the main activity of the application. It includes the activity's methods (onCreate, onStart, onResume, etc.) and the logic associated with handling user interface elements and user interactions.
 
 ![6d5f8eb443a6f3e0a81dfd957b404b35.png](/assets/img/screenshots/hooking_frida/6d5f8eb443a6f3e0a81dfd957b404b35.png)
 
