@@ -5,6 +5,8 @@ categories: Mobile Android
 ---
 In this entry I will try to explain the of hooking in mobile applications. This is technique employed to intercept and modify the behavior of functions. For this tests I will be using Frida, an open-source toolkit to inject their scripts into running processes, enabling real-time manipulation and analysis.
 
+![Frida.png](/assets/img/screenshots/hooking_frida/Frida.png)
+
 # Introduction to Frida
 
 ### What is Frida?
@@ -149,7 +151,7 @@ The check() method takes arguments that include the random number, so we can con
 
 ### Template:
 
-```Java
+```
 Java.perform(function (){
 
 var <class_reference>= Java.use("<package_name>.<class>");  
@@ -192,7 +194,7 @@ Next, we will modify the script to include our custom implementation of the meth
 
 Basically, In our script, we replaced the original implementation of the get\_random() method with our custom one, but we did not provide a return value. This return value is assigned to the i variable and is used in the check() function. So, let's try providing a return value. You can use any value. Our script should be something like the following, save it to *hook.js.* 
 
-```Java
+```
 Java.perform(function (){
  
 var a= Java.use("com.ad2001.frida0x1.MainActivity");
@@ -226,7 +228,7 @@ Now, let's try to retrieve the originally generated random value. To achieve thi
 
 In this case, the first snippet keeps the same, but instead of modifying the return value directly, it calls the original *get\_random* method using *this.get\_random()* and logs its return value.
 
-```Java
+```
 Java.perform(function (){
  
 var a= Java.use("com.ad2001.frida0x1.MainActivity");
@@ -260,7 +262,7 @@ Upon inspecting the parameters of the check function, the initial parameter, i, 
 
 When intercepting methods with arguments, it's crucial to define the expected argument types using the overload(arg\_type) keyword. Ensure that your implementation includes these specified arguments when hooking the method. In our case, the check() function accepts two integer arguments, and we can indicate this as follows:
 
-```Java
+```
 Java.perform(function (){
  
 var a= Java.use("com.ad2001.frida0x1.MainActivity");
@@ -295,14 +297,14 @@ In the realm of Frida, mastering the art of method hooking involves tapping into
 
 # Resources:
 
-https://github.com/DERE-ad2001/Frida-Labs
+[https://github.com/DERE-ad2001/Frida-Labs](https://github.com/DERE-ad2001/Frida-Labs)
 
 [https://learnfrida.info/advanced\\\_usage/](https://learnfrida.info/advanced%5C_usage/)
 
-https://codeshare.frida.re/
+[https://codeshare.frida.re](https://codeshare.frida.re)
 
-https://github.com/asvid/FridaApp
+[https://github.com/asvid/FridaApp](https://github.com/asvid/FridaApp)
 
-https://github.com/sensepost/objection
+[https://github.com/sensepost/objection](https://github.com/sensepost/objection)
 
-https://book.hacktricks.xyz
+[https://book.hacktricks.xyz](https://book.hacktricks.xyz)
