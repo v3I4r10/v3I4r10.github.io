@@ -275,7 +275,7 @@ console.log("The user input is "+b);
 
 After getting these args, we need to guarantee the uninterrupted operation of the check function to generate the flag. The primary goal is to extract the random value without compromising the overall functionality of the function. Consequently, we can straightforwardly invoke the original check() function,
 
-```Java
+```
 Java.perform(function() {
     var a = Java.use("com.ad2001.frida0x1.MainActivity");
     a.check.overload('int', 'int').implementation = function(a, b) {
