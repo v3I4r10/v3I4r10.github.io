@@ -1,3 +1,10 @@
+---
+title: Introduction to hooking with Frida
+tags: Frida Hooking
+categories: Mobile Android
+---
+In this entry I will try to explain the of hooking in mobile applications. This is technique employed to intercept and modify the behavior of functions. For this tests I will be using Frida, an open-source toolkit to inject their scripts into running processes, enabling real-time manipulation and analysis.
+
 # Introduction to Frida
 
 ### What is Frida?
@@ -14,7 +21,7 @@ Install Frida using pip:
 
 After that, download [frida server](https://github.com/frida/frida/releases) in the device, depending in you architecture you should download one or the other:
 
-<img src="../_resources/16d5f5311d1790238d5f7ad14d4bbeb5.png" alt="16d5f5311d1790238d5f7ad14d4bbeb5.png" width="695" height="264" class="jop-noMdConv">
+![16d5f5311d1790238d5f7ad14d4bbeb5.png](/assets/img/screenshots/hooking_frida/16d5f5311d1790238d5f7ad14d4bbeb5.png)
 
 Since I'm using an x86 Genymotion emulator, I will download the x86 version. If you want to check my set up visit this [blog post](https://v3l4r10.github.io/posts/Android-pentesting-lab-set-up/) where I explain how to do it
 
@@ -22,11 +29,11 @@ If you don't know about your device's architecture, use this command:
 
 `adb shell getprop ro.product.cpu.abi`
 
-![e9a1e1bcd5660ee194ed68223d26c7f3.png](../_resources/e9a1e1bcd5660ee194ed68223d26c7f3.png)
+![e9a1e1bcd5660ee194ed68223d26c7f3.png](/assets/img/screenshots/hooking_frida/e9a1e1bcd5660ee194ed68223d26c7f3.png)
 
 Once downloaded, decompress the file and move it to /data/local/tmp Android folder and run Frida server:
 
-![ea7ec26bf3f50d62ccd02dbe91f7a131.png](../_resources/ea7ec26bf3f50d62ccd02dbe91f7a131.png)
+![ea7ec26bf3f50d62ccd02dbe91f7a131.png](/assets/img/screenshots/hooking_frida/ea7ec26bf3f50d62ccd02dbe91f7a131.png)
 
 `xz -d frida-server-16.1.8-android-x86.xz`
 
@@ -60,7 +67,7 @@ To connect objection to a runtime application, first list all the applications u
 
 `frida-ps -Uai  |  grep  <appName>`
 
-<img src="../_resources/4c30d0532c882d07d2af7eacfbd9942a.png" alt="4c30d0532c882d07d2af7eacfbd9942a.png" width="362" height="288" class="jop-noMdConv">
+![4c30d0532c882d07d2af7eacfbd9942a.png](/assets/img/screenshots/hooking_frida/4c30d0532c882d07d2af7eacfbd9942a.png)
 
 After that, run the objection with the app identifier:
 
@@ -102,7 +109,7 @@ Before hooking a method, we have to understand how the application works, how to
 
 The functionality is quite simple, it asks us to enter a number and returns an output:
 
-<img src="../_resources/b4b780ff4cf73e64c726127477019ffd.png" alt="b4b780ff4cf73e64c726127477019ffd.png" width="247" height="421" class="jop-noMdConv">
+![b4b780ff4cf73e64c726127477019ffd.png](/assets/img/screenshots/hooking_frida/b4b780ff4cf73e64c726127477019ffd.png)
 
 After the dynamic analysis, we will use [jadx](https://github.com/skylot/jadx) to decompile the code and understand the backend. Open jadx and decompile the APK by using the GUI:
 
@@ -110,7 +117,7 @@ After the dynamic analysis, we will use [jadx](https://github.com/skylot/jadx) t
 
 Once opened, go to MainActivty file. As it names indicatd, this file represents the main activity of the application. It includes the activity's lifecycle methods (onCreate, onStart, onResume, etc.) and the logic associated with handling user interface elements and user interactions.
 
-![6d5f8eb443a6f3e0a81dfd957b404b35.png](../_resources/6d5f8eb443a6f3e0a81dfd957b404b35.png)
+![6d5f8eb443a6f3e0a81dfd957b404b35.png](/assets/img/screenshots/hooking_frida/6d5f8eb443a6f3e0a81dfd957b404b35.png)
 
 Briefly, what application does the following:
 
@@ -175,11 +182,11 @@ Within the specified class, &lt;class\_reference&gt;.&lt;method\_to\_hook&gt; re
 
 First of all, in order to get the package name, we will run `frida-ps -Uai` to list all the packages:
 
-<img src="../_resources/4c30d0532c882d07d2af7eacfbd9942a.png" alt="4c30d0532c882d07d2af7eacfbd9942a.png" width="424" height="338">
+![4c30d0532c882d07d2af7eacfbd9942a.png](/assets/img/screenshots/hooking_frida/4c30d0532c882d07d2af7eacfbd9942a.png)
 
 Going back to the code we should set the class\_reference to *MainActivity*:
 
-<img src="../_resources/e261baeebf31652953bb9a3d73aca95f.png" alt="e261baeebf31652953bb9a3d73aca95f.png" width="849" height="414">
+![e261baeebf31652953bb9a3d73aca95f.png](/assets/img/screenshots/hooking_frida/e261baeebf31652953bb9a3d73aca95f.png)
 
 Next, we will modify the script to include our custom implementation of the method. The method to hook is *get\_random.*
 
@@ -205,13 +212,13 @@ Once we have it, run frida 
 
 `frida -U -f com.ad2001.frida0x1 -l ./hook.js`
 
-<img src="../_resources/c5258597345788d49c0bbbe1b4376923.png" alt="c5258597345788d49c0bbbe1b4376923.png" width="636" height="246">
+![c5258597345788d49c0bbbe1b4376923.png](/assets/img/screenshots/hooking_frida/c5258597345788d49c0bbbe1b4376923.png)
 
 Now, 1 will be passed to the check() function. Let's calculate the value so that we can satisfy the if check and obtain the flag.
 
 if ((i \* 2) + 4 == i2) --> 1 \* 2 +4 = 6. If we enter 6 in the form, we can obtain the flag
 
-<img src="../_resources/89609315f5a6708bef34b652bfbd770e.png" alt="89609315f5a6708bef34b652bfbd770e.png" width="275" height="426">
+![89609315f5a6708bef34b652bfbd770e.png](/assets/img/screenshots/hooking_frida/89609315f5a6708bef34b652bfbd770e.png)
 
 ### Hooking get\_random() \[option 2\]
 
@@ -237,7 +244,7 @@ return ret_val; //returning the original random value from the get_random method
 
 After crafting the script, run frida and get the value:
 
-**<img src="../_resources/8089089a1358e7d676931d34b53cb863.png" alt="8089089a1358e7d676931d34b53cb863.png" width="735" height="285">**
+![8089089a1358e7d676931d34b53cb863.png](/assets/img/screenshots/hooking_frida/8089089a1358e7d676931d34b53cb863.png)
 
 \*Remember to bypass the check() function in order to get the flag:
 
@@ -247,7 +254,7 @@ if ((i \* 2) + 4 == i2)  --> 36 \*2 +4 = 76
 
 In order to hook the method, lets read the code again: 
 
-![cfc2a0eb5cbc820b7c79937810406bff.png](../_resources/cfc2a0eb5cbc820b7c79937810406bff.png)
+![cfc2a0eb5cbc820b7c79937810406bff.png](/assets/img/screenshots/hooking_frida/cfc2a0eb5cbc820b7c79937810406bff.png)
 
 Upon inspecting the parameters of the check function, the initial parameter, i, signifies the random number, while the second one, i2, represents the user-inputted number. Let's use Frida to intercept and display both of these parameters.
 
@@ -282,7 +289,7 @@ Java.perform(function() {
 
 After that, run frida again frida -U -f com.ad2001.frida0x1 -l ./hook.js
 
-![029bb579a3de41fb66cc57078959bd7e.png](../_resources/029bb579a3de41fb66cc57078959bd7e.png)
+![029bb579a3de41fb66cc57078959bd7e.png](/assets/img/screenshots/hooking_frida/029bb579a3de41fb66cc57078959bd7e.png)
 
 In the realm of Frida, mastering the art of method hooking involves tapping into the essential principles of extracting both arguments and return values. This process serves as the gateway to unlocking the full potential of Frida's capabilities. As we journey through this series, we'll delve deeper into the intricacies of Frida, exploring its powerful features and uncovering the myriad possibilities it offers for application analysis and manipulation.
 
