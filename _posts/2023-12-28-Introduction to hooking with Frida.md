@@ -3,7 +3,7 @@ title: Introduction to hooking with Frida
 tags: Frida Hooking
 categories: Mobile Android
 ---
-In this entry I will try to explain the of hooking in mobile applications. This is a technique employed to intercept and modify the behavior of functions. For this tests I will be using Frida, an open-source toolkit to inject their scripts into running processes, enabling real-time manipulation and analysis.
+In this entry I will show hooking in mobile applications. This is a technique employed to intercept and modify the behavior of functions. For this tests I will be using Frida, an open-source toolkit to inject their scripts into running processes, enabling real-time manipulation and analysis.
 
 ![Frida.png](/assets/img/screenshots/hooking_frida/Frida.png)
 
