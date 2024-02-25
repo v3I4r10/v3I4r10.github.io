@@ -19,7 +19,7 @@ USB ESP01S Adaptor. [Link](https://es.aliexpress.com/item/1005003772310662.html?
 
 Once you have the two pieces, connect the ESP01S to the USB adapter (LIKE THIS!):
 
-![Sin%20título.jpg](/assets/img/screenshots/deauther/Sin%20título.jpg)
+![Screenshot1.jpg](/assets/img/screenshots/deauther/Screenshot1.jpg)
 
 ⚠️Be careful with connecting the esp01s wrong, it has to be like in the picture above, not the other way, you can get a burn if you turn it upside down.
 
@@ -53,7 +53,7 @@ After some minutes the flashing process will be finished and the "pwned" wifi ne
 
 If it does not appear unplug the USB and plug it again.
 
-![Sin%20título2.jpg](/assets/img/screenshots/deauther/Sin%20título2.jpg)
+![Screenshot2.jpg](/assets/img/screenshots/deauther/Screenshot2.jpg)
 
 By default, the password is "deauther" but you will be able to change it later in settings. Go to 192.168.4.1 and configure it :) 
 
