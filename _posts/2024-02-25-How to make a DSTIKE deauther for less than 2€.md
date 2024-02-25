@@ -55,4 +55,6 @@ If it does not appear unplug the USB and plug it again.
 
 ![Sin%20título2.jpg](/assets/img/screenshots/deauther/Sin%20título2.jpg)
 
-By default, the password is "deauther" but you will be able to change it later in settings. Go to 192.168.4.1 and configure it :) ![Screenshot_9.png](../_resources/Screenshot_9.png)
+By default, the password is "deauther" but you will be able to change it later in settings. Go to 192.168.4.1 and configure it :) 
+
+![Screenshot_9.png](/assets/img/screenshots/deauther/Screenshot_9.png)
