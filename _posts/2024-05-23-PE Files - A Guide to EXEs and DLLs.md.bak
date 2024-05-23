@@ -14,7 +14,7 @@ DLLs are modules that are <ins>loaded into a process</ins> and cannot be ran ind
 
 It is mainly divided into 2 parts: Headers and sections:
 
-![1780b0d9400766bd0bb31a2247fae0ee.png](/assets/img/screenshots/pe1/8dbe616191e70f1edb3f419c2e29fe0a.png)
+<img src="/_resources/8dbe616191e70f1edb3f419c2e29fe0a.png" alt="8dbe616191e70f1edb3f419c2e29fe0a.png" width="557" height="462" class="jop-noMdConv">
 
 So the Windows loader loads the PE file into memory, checks the headers, checks dependencies, and establishes the execution environment for the PE file.
 
