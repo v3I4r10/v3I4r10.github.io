@@ -1,3 +1,9 @@
+---
+title: How to make a DSTIKE deauther for less than 2€
+tags: 
+categories: Wifi
+---
+
 The DSTIKE Deauther is a compact, programmable device leveraging the ESP8266 or ESP32 microcontroller platforms. Its primary function is to conduct Wi-Fi deauthentication attacks by sending deauthentication packets to targeted networks.
 
 ## Prerequisites
