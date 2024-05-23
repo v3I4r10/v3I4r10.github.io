@@ -16,7 +16,7 @@ USB ESP01S Adaptor. [Link](https://es.aliexpress.com/item/1005003772310662.html?
 
 Once you have the two pieces, connect the ESP01S to the USB adapter (LIKE THIS!):
 
-![Screenshot_1.png](/assets/img/screenshots/deauther/Screenshot1.png)
+![Screenshot_1.png](/assets/img/screenshots/deauther/Screenshot1.jpg)
 
 ⚠️Be careful with connecting the esp01s wrong, it has to be like in the picture above, not the other way, you can get a burn if you turn it upside down.
 
@@ -49,7 +49,6 @@ It will probably be COM4 but in case yours is different go to "Device Manager" -
 After some minutes the flashing process will be finished and the "pwned" wifi network will be shown.
 
 If it does not appear unplug the USB and plug it again.
-
 
 ![2.jpg](/assets/img/screenshots/deauther/2.jpg)
 
