@@ -33,7 +33,7 @@ Essentially, compilation translates human-readable source code into machine-read
 3.  **Assembly**: Converts assembly code into machine code (object files).
 4.  **Linking**: Combines object files into a single executable (PE file).
 
-![1780b0d9400766bd0bb31a2247fae0ee.png](_resources/1780b0d9400766bd0bb31a2247fae0ee.png)
+![1780b0d9400766bd0bb31a2247fae0ee.png](/assets/img/screenshots/pe1/1780b0d9400766bd0bb31a2247fae0ee.png)
 
 ### Hands on! (EXE)
 
@@ -59,15 +59,15 @@ After compiling the code, run the .exe file. It will open the console, print "He
 
 While the executable is running (do not close the console), open Process Hacker and look for the file name, in this case, HW.exe. Process manageris a powerful tool that provides advanced features beyond the standard Task Manager.
 
-![63cc54813785ca81e4e12aeef9b4ea37.png](_resources/63cc54813785ca81e4e12aeef9b4ea37.png)
+![63cc54813785ca81e4e12aeef9b4ea37.png](/assets/img/screenshots/pe1/63cc54813785ca81e4e12aeef9b4ea37.png)
 
 In the module stab we can search for al the .dll loaded in memory of the process:
 
-![b69b345d428411770973715c5bacad23.png](_resources/b69b345d428411770973715c5bacad23.png)
+![b69b345d428411770973715c5bacad23.png](/assets/img/screenshots/pe1/b69b345d428411770973715c5bacad23.png)
 
 In the "Memory" tab you can find how memory is utilized by the selected process:
 
-![ea7bf398fefdf47d0332209881f19d70.png](_resources/ea7bf398fefdf47d0332209881f19d70.png)
+![ea7bf398fefdf47d0332209881f19d70.png](/assets/img/screenshots/pe1/ea7bf398fefdf47d0332209881f19d70.png)
 
 ### Hands on! (DLL)
 
@@ -105,14 +105,14 @@ After compiling the code in VS, a .dll will be generated. IN this case I will us
 
 `rundll32 .\HW.dll,HelloWorld`
 
-![084ad9d734a970c55c30dd5148c8fc9a.png](_resources/084ad9d734a970c55c30dd5148c8fc9a.png)
+![084ad9d734a970c55c30dd5148c8fc9a.png](/assets/img/screenshots/pe1/084ad9d734a970c55c30dd5148c8fc9a.png)
 
 After running the program, you'll encounter a "Hello World" message box. Next, open Process Hacker and search for the name you assigned to the DLL file, such as "HW.dll". Upon inspection, you'll notice that Process Hacker detects a process named `rundll32.exe` in execution. This occurrence is expected, as `rundll32.exe` serves as the program responsible for loading and executing the DLL file.
 
-![7f746cefeb9e85b21956c266dc5a4dc6.png](_resources/7f746cefeb9e85b21956c266dc5a4dc6.png)
+![7f746cefeb9e85b21956c266dc5a4dc6.png](/assets/img/screenshots/pe1/7f746cefeb9e85b21956c266dc5a4dc6.png)
 
 If we open the process and delve deeper into the Modules tab, we'll observe that `HW.dll` is indeed loaded into the process.
 
-![fbd4349400ce47b12920ccf1908a0093.png](_resources/fbd4349400ce47b12920ccf1908a0093.png)
+![fbd4349400ce47b12920ccf1908a0093.png](/assets/img/screenshots/pe1/fbd4349400ce47b12920ccf1908a0093.png)
 
 And that wraps up today's post. In the next posts, I'll show how to embed payloads in PE files and creating a backdoor in a legitimate application, bypassing Windows Defender, etc.
