@@ -34,7 +34,7 @@ Then, it's time to flash the DSTIKE deauther firmware, so first download it from
 
 .BIN --> DSTIKE --> NODECMU
 
-Now let's open Arduino IDE and add an dditional Board URL:
+Now let's flash the deauther, for that open Arduino IDE:
 
 Open preferences from File > Preferences.
 
@@ -42,22 +42,28 @@ In the "Additional Board Manager URLs" field, paste the following link:http://ar
 
 ![Screenshot_10.png](/assets/img/screenshots/zifi/Screenshot_10.png)
 
-Once you have all the above, install the drivers:
+Once you have all the above, open the flashing tool and go to "Advanced" tab. You need to set the BAUD to 115200, Flash size 1MB, Flash speed 40MHz and SPI Mode DOUT, in the case of the NodeMCU Flasher:
 
-Navigate to Tools > Board: "Arduino UNO" > Board Manager...
+![Screenshot_6.png](/assets/img/screenshots/deauther/Screenshot_6.png)
 
-In the Board Manager, search for "esp" and install "ESP8266 by ESP8266 Community".
+Move to "Config" tab and set the file to flash:
 
-![Screenshot_1.jpg](/assets/img/screenshots/zifi/Screenshot_1.jpg)
+![Screenshot_7.png](/assets/img/screenshots/deauther/Screenshot_7.png)
 
-With these steps, our Arduino IDE is configured to program the ESP-01 board. For this type of board, we can leave other configuration parameters at their default values:
+Finally move to "Operation" tab and set your COM port:
 
-    Flash Mode → "DIO"
-    Flash Frequency → "40MHz"
-    CPU Frequency → "80MHz"
-    Flash Size → "512K (64K SPIFFS)"
-    Debug port → "Disabled"
-    Debug Level → "None"
-    Reset Method → "ck"
-    Upload Speed → "115200"
+![Screenshot_5.png](/assets/img/screenshots/deauther/Screenshot_5.png)
 
+It will probably be COM4 but in case yours is different go to "Device Manager" --> Ports (COM and LTP):
+
+![Screenshot_8.png](/assets/img/screenshots/deauther/Screenshot_8.png)
+
+After some minutes the flashing process will be finished and the "pwned" wifi network will be shown.
+
+If it does not appear unplug the USB and plug it again.
+
+![Screenshot2.jpg](/assets/img/screenshots/deauther/Screenshot2.jpg)
+
+By default, the password is "deauther" but you will be able to change it later in settings. Go to 192.168.4.1 and configure it :) 
+
+![Screenshot_9.png](/assets/img/screenshots/deauther/Screenshot_9.png)

@@ -1,12 +1,12 @@
 ---
-title: Build a ZiFi using a ESP01S board (less than 2€)
+title: How to make a DSTIKE deauther for less than 2€
 tags: 
 categories: Wifi
 ---
 
 In this post I will create the cheapest DSTIKE deauther to constantly deauthenticate devices in a wifi network or perform other types of wireless attacks.
 
-The ESP01S is a compact WiFi-enabled microcontroller, serves as the cornerstone of our ZiFi EvilTwin  [Link](https://github.com/sankethj/ZiFi). With its capabilities, we can emulate a legitimate WiFi network and intercept data from unsuspecting users who connect to it.
+The DSTIKE Deauther is a compact, programmable device leveraging the ESP8266 or ESP32 microcontroller platforms. Its primary function is to conduct Wi-Fi deauthentication attacks by sending deauthentication packets to targeted networks.
 
 ## Prerequisites
 
@@ -15,8 +15,6 @@ ESP01S. [Link](https://es.aliexpress.com/item/1005006323836809.html?spm=a2g0o.pr
 USB ESP01S Adapter. [Link](https://es.aliexpress.com/item/1005003772310662.html?spm=a2g0o.productlist.main.21.2d2d316fsmZ9iq&algo_pvid=b1e91228-dbab-4a9d-b1be-8f97de1fc506&algo_exp_id=b1e91228-dbab-4a9d-b1be-8f97de1fc506-10&pdp_npi=4%40dis%21EUR%212.12%211.44%21%21%212.24%211.52%21%40211b613117088881362586120e8ee5%2112000027112227203%21sea%21ES%213170010347%21&curPageLogUid=7Dhw4WLwdVY0&utparam-url=scene%3Asearch%7Cquery_from%3A)
 
 [Buy both together link](https://es.aliexpress.com/item/1005002975811689.html?spm=a2g0o.productlist.main.5.6be9767fz26r9g&algo_pvid=639524e7-0b00-42fb-ad74-19ae97538200&algo_exp_id=639524e7-0b00-42fb-ad74-19ae97538200-2&pdp_ext_f=%7B%22sku_id%22%3A%2212000023045787079%22%7D&pdp_npi=3%40dis%21EUR%214.09%212.91%21%21%21%21%21%40211beca116792522848537831d0703%2112000023045787079%21sea%21ES%213767851196&curPageLogUid=JBsjD0LjXKUa)
-
-Arduino IDE
 
 ## Installation
 
@@ -34,30 +32,30 @@ Then, it's time to flash the DSTIKE deauther firmware, so first download it from
 
 .BIN --> DSTIKE --> NODECMU
 
-Now let's open Arduino IDE and add an dditional Board URL:
+Now let's flash the deauther, for that I will use [this tool.](https://github.com/nodemcu/nodemcu-flasher)
 
-Open preferences from File > Preferences.
+Once you have all the above, open the flashing tool and go to "Advanced" tab. You need to set the BAUD to 115200, Flash size 1MB, Flash speed 40MHz and SPI Mode DOUT, in the case of the NodeMCU Flasher:
 
-In the "Additional Board Manager URLs" field, paste the following link:http://arduino.esp8266.com/stable/package_esp8266com_index.json
+![Screenshot_6.png](/assets/img/screenshots/deauther/Screenshot_6.png)
 
-![Screenshot_10.png](/assets/img/screenshots/zifi/Screenshot_10.png)
+Move to "Config" tab and set the file to flash:
 
-Once you have all the above, install the drivers:
+![Screenshot_7.png](/assets/img/screenshots/deauther/Screenshot_7.png)
 
-Navigate to Tools > Board: "Arduino UNO" > Board Manager...
+Finally move to "Operation" tab and set your COM port:
 
-In the Board Manager, search for "esp" and install "ESP8266 by ESP8266 Community".
+![Screenshot_5.png](/assets/img/screenshots/deauther/Screenshot_5.png)
 
-![Screenshot_1.jpg](/assets/img/screenshots/zifi/Screenshot_1.jpg)
+It will probably be COM4 but in case yours is different go to "Device Manager" --> Ports (COM and LTP):
 
-With these steps, our Arduino IDE is configured to program the ESP-01 board. For this type of board, we can leave other configuration parameters at their default values:
+![Screenshot_8.png](/assets/img/screenshots/deauther/Screenshot_8.png)
 
-    Flash Mode → "DIO"
-    Flash Frequency → "40MHz"
-    CPU Frequency → "80MHz"
-    Flash Size → "512K (64K SPIFFS)"
-    Debug port → "Disabled"
-    Debug Level → "None"
-    Reset Method → "ck"
-    Upload Speed → "115200"
+After some minutes the flashing process will be finished and the "pwned" wifi network will be shown.
 
+If it does not appear unplug the USB and plug it again.
+
+![Screenshot2.jpg](/assets/img/screenshots/deauther/Screenshot2.jpg)
+
+By default, the password is "deauther" but you will be able to change it later in settings. Go to 192.168.4.1 and configure it :) 
+
+![Screenshot_9.png](/assets/img/screenshots/deauther/Screenshot_9.png)
