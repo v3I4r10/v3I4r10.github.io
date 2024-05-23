@@ -22,7 +22,7 @@ Arduino IDE
 
 Once you have the two pieces, connect the ESP01S to the USB adapter (LIKE THIS!):
 
-![Screenshot1.jpg](/assets/img/screenshots/deauther/Screenshot1.jpg)
+![Screenshot1.jpg](/assets/img/screenshots/deauther/Screenshot1.png)
 
 ⚠️Be careful with connecting the esp01s wrong, it has to be like in the picture above, not the other way, you can get a burn if you turn it upside down.
 
@@ -48,7 +48,7 @@ Navigate to Tools > Board: "Arduino UNO" > Board Manager...
 
 In the Board Manager, search for "esp" and install "ESP8266 by ESP8266 Community".
 
-![Screenshot_1.jpg](/assets/img/screenshots/zifi/Screenshot_1.jpg)
+![Screenshot_1.jpg](/assets/img/screenshots/zifi/Screenshot_1.png)
 
 With these steps, our Arduino IDE is configured to program the ESP-01 board. For this type of board, we can leave other configuration parameters at their default values:
 
