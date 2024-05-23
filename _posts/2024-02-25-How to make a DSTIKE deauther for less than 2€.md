@@ -22,7 +22,7 @@ Arduino IDE
 
 Once you have the two pieces, connect the ESP01S to the USB adapter (LIKE THIS!):
 
-![Screenshot1.png](/assets/img/screenshots/deauther/Screenshot1.png)
+![Screenshot1.png](/assets/img/screenshots/zifi/Screenshot1.png)
 
 ⚠️Be careful with connecting the esp01s wrong, it has to be like in the picture above, not the other way, you can get a burn if you turn it upside down.
 
