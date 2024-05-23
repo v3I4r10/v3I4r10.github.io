@@ -1,4 +1,3 @@
-
 ---
 title: How to make a DSTIKE deauther for less than 2€
 tags: 
@@ -17,7 +16,7 @@ USB ESP01S Adaptor. [Link](https://es.aliexpress.com/item/1005003772310662.html?
 
 Once you have the two pieces, connect the ESP01S to the USB adapter (LIKE THIS!):
 
-![Screenshot_1.png](/assets/img/screenshots/deauther/Sintítulo2.png)
+![Screenshot_1.png](/assets/img/screenshots/deauther/Screenshot1.png)
 
 ⚠️Be careful with connecting the esp01s wrong, it has to be like in the picture above, not the other way, you can get a burn if you turn it upside down.
 
@@ -52,7 +51,7 @@ After some minutes the flashing process will be finished and the "pwned" wifi ne
 If it does not appear unplug the USB and plug it again.
 
 
-![Sin-título2-1.jpg](/assets/img/screenshots/deauther/Sin-título2-1.jpg)
+![2.jpg](/assets/img/screenshots/deauther/2.jpg)
 
 By default, the password is "deauther" but you will be able to change it later in settings. Go to 192.168.4.1 and configure it :) 
 

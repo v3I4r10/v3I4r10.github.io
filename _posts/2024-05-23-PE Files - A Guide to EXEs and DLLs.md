@@ -1,7 +1,7 @@
 ---
 title: PE Files - A Guide to EXEs and DLLs
 tags: 
-categories: Wifi
+categories: MalDev
 ---
 
 Welcome to my Malware development series on my blog. I'm just starting to learn so I'm going to share what I learn here. I would like to emphasize that I am providing this information in an educational way and always supporting the ethical way.
