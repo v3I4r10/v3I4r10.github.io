@@ -1,5 +1,5 @@
 ---
-title: Build a ZiFi using a ESP01S board (less than 2€)
+title: How to make a DSTIKE deauther for less than 2€
 tags: 
 categories: Wifi
 ---
